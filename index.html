@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Pack Card Game</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h2>Card Pack Game</h2>
+
+<div id="auth">
+<input id="email" placeholder="email">
+<input id="password" type="password" placeholder="password">
+
+<button onclick="register()">Register</button>
+<button onclick="login()">Login</button>
+<button onclick="logout()">Logout</button>
+</div>
+
+<hr>
+
+<div id="userInfo"></div>
+
+<div id="money"></div>
+
+<button onclick="randomPacks()">Random Pack</button>
+
+<div id="packs"></div>
+
+<div id="cardViewer">
+<h3 id="card"></h3>
+<button onclick="nextCard()">Next</button>
+</div>
+
+<script type="module" src="app.js"></script>
+
+</body>
+</html>
