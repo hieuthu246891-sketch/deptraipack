@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Admin</title>
+</head>
+
+<body>
+
+<h2>Admin Panel</h2>
+
+<input id="uid" placeholder="UID">
+<input id="money" placeholder="Money">
+
+<button onclick="add()">Add</button>
+<button onclick="remove()">Remove</button>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getDatabase, ref, get, update } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+const firebaseConfig = {
+apiKey: "AIzaSyA3jfkHd8_FN2M-FBGoIWIz8ZuIYwb-v0c",
+authDomain: "casino-slot-ec289.firebaseapp.com",
+databaseURL: "https://casino-slot-ec289-default-rtdb.asia-southeast1.firebasedatabase.app",
+projectId: "casino-slot-ec289"
+};
+
+const app=initializeApp(firebaseConfig)
+const db=getDatabase(app)
+
+window.add=async function(){
+
+let uid=document.getElementById("uid").value
+let money=parseInt(document.getElementById("money").value)
+
+let snap=await get(ref(db,"users/"+uid))
+
+update(ref(db,"users/"+uid),{
+money:snap.val().money+money
+})
+
+}
+
+window.remove=async function(){
+
+let uid=document.getElementById("uid").value
+let money=parseInt(document.getElementById("money").value)
+
+let snap=await get(ref(db,"users/"+uid))
+
+update(ref(db,"users/"+uid),{
+money:snap.val().money-money
+})
+
+}
+
+</script>
+
+</body>
+</html>
